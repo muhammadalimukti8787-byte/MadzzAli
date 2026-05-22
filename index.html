@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Planner Kuliah</title>
+    <title>CyberCampus V2</title>
+    <!-- Fonts Tech -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
@@ -13,9 +14,9 @@
         :root {
             --bg-body: #030305;
             --bg-card: #0e0e11;
-            --primary: #00f3ff;
+            --primary: #00f3ff; /* Cyan Neon */
             --primary-glow: rgba(0, 243, 255, 0.4);
-            --accent: #ff0055;
+            --accent: #ff0055; /* Pink Neon */
             --text-main: #ffffff;
             --text-muted: #888888;
             --border: #333;
@@ -34,6 +35,7 @@
             color: var(--text-main);
             padding-bottom: 90px;
             overflow-x: hidden;
+            /* Grid Background Animation */
             background-image: linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
@@ -45,6 +47,7 @@
             100% { background-position: 30px 30px; }
         }
 
+        /* Glitch Effect Header */
         header {
             background: rgba(5, 5, 5, 0.9);
             backdrop-filter: blur(10px);
@@ -60,6 +63,7 @@
             color: var(--text-main); position: relative;
         }
 
+        /* Glitch Animation Keyframes */
         .glitch { position: relative; }
         .glitch::before, .glitch::after {
             content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -76,6 +80,7 @@
         @keyframes glitch-anim-1 { 0% { clip-path: inset(20% 0 80% 0); } 20% { clip-path: inset(60% 0 10% 0); } 40% { clip-path: inset(40% 0 50% 0); } 60% { clip-path: inset(80% 0 5% 0); } 80% { clip-path: inset(10% 0 60% 0); } 100% { clip-path: inset(30% 0 30% 0); } }
         @keyframes glitch-anim-2 { 0% { clip-path: inset(10% 0 60% 0); } 20% { clip-path: inset(30% 0 10% 0); } 40% { clip-path: inset(70% 0 20% 0); } 60% { clip-path: inset(20% 0 50% 0); } 80% { clip-path: inset(50% 0 30% 0); } 100% { clip-path: inset(0% 0 80% 0); } }
 
+        /* Layout & Animation */
         main { padding: 20px; max-width: 600px; margin: 0 auto; position: relative; z-index: 2; }
         
         .section { display: none; }
@@ -94,6 +99,7 @@
         .section-header i { font-size: 1.2rem; animation: pulseIcon 2s infinite; }
         @keyframes pulseIcon { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
 
+        /* Cards with 3D Tilt & Hover */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -127,11 +133,13 @@
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); color: var(--text-muted);
         }
 
+        /* Today Highlight */
         .card.today-active { border-color: #00ff9d; background: linear-gradient(135deg, rgba(0,255,157,0.05), transparent); }
         .card.today-active:hover { box-shadow: 0 10px 30px rgba(0, 255, 157, 0.15); }
         .card.today-active::before { background: #00ff9d; }
         .card.today-active .card-subtitle { color: #00ff9d; }
 
+        /* Buttons */
         .btn-icon {
             background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff;
             width: 36px; height: 36px; border-radius: 8px; cursor: pointer;
@@ -140,6 +148,7 @@
         .btn-icon:hover { background: var(--primary); color: #000; transform: rotate(10deg); }
         .btn-icon.delete:hover { background: var(--accent); color: #fff; box-shadow: 0 0 10px var(--accent); }
 
+        /* FAB */
         .fab {
             position: fixed; bottom: 90px; right: 20px;
             width: 60px; height: 60px; border-radius: 50%;
@@ -155,6 +164,7 @@
             50% { transform: translateY(-10px); }
         }
 
+        /* Bottom Nav */
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%;
             background: rgba(3, 3, 5, 0.95); backdrop-filter: blur(10px);
@@ -171,6 +181,7 @@
         .nav-item.active { color: var(--primary); text-shadow: 0 0 8px var(--primary-glow); }
         .nav-item.active i { transform: translateY(-5px); filter: drop-shadow(0 0 5px var(--primary)); }
 
+        /* Modal */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
@@ -186,6 +197,7 @@
         }
         @keyframes slideUpModal { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
+        /* Forms */
         .form-group { margin-bottom: 16px; }
         .form-label { display: block; margin-bottom: 8px; font-family: var(--font-code); font-size: 0.8rem; color: var(--primary); }
         
@@ -210,6 +222,7 @@
         }
         .btn-primary:hover::after { left: 100%; }
 
+        /* Task Tabs */
         .task-tabs { display: flex; background: #111; padding: 4px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); }
         .task-tab {
             flex: 1; text-align: center; padding: 12px; cursor: pointer;
@@ -218,6 +231,7 @@
         }
         .task-tab.active { background: var(--accent); color: #fff; font-weight: bold; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
 
+        /* Finance */
         .finance-summary {
             background: linear-gradient(135deg, #1a1a1a, #0a0a0a); border: 1px solid var(--border);
             padding: 24px; border-radius: 20px; margin-bottom: 24px; text-align: center;
@@ -230,6 +244,7 @@
         .edit-balance-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 4px 10px; margin-top: 10px; cursor: pointer; border-radius: 4px; font-size: 0.7rem; }
         .edit-balance-btn:hover { border-color: var(--primary); color: var(--primary); }
 
+        /* Toast */
         .toast {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-50px);
             background: rgba(0, 0, 0, 0.9); border: 1px solid var(--primary); color: var(--primary);
@@ -241,48 +256,55 @@
 
         .empty-state { text-align: center; color: var(--text-muted); padding: 40px 20px; border: 1px dashed var(--border); border-radius: var(--radius); }
         .empty-state i { font-size: 3rem; margin-bottom: 10px; opacity: 0.3; color: #fff; }
+
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <h1 id="page-title" class="glitch" data-text="DASHBOARD KULIAH">DASHBOARD KULIAH</h1>
+        <h1 id="page-title" class="glitch" data-text="JADWAL GUE">JADWAL GUE</h1>
         <div style="color:var(--primary);"><i class="ph ph-cpu" style="font-size:1.5rem; animation:spin 4s linear infinite;"></i></div>
     </header>
     <style>@keyframes spin { 100% { transform:rotate(360deg); } }</style>
 
     <main>
+        <!-- 1. JADWAL KULIAH -->
         <section id="schedule-section" class="section active">
+            
             <div id="today-label" class="section-header" style="display:none; color:#00ff9d;">
-                <i class="ph ph-lightning"></i> JADWAL HARI INI
+                <i class="ph ph-lightning"></i> JADWAL HARI INI (NYALA)
             </div>
             <div id="today-list"></div>
 
             <div class="section-header">
-                <i class="ph ph-list-dashes"></i> SEMUA JADWAL
+                <i class="ph ph-list-dashes"></i> SEMUA DATA JADWAL
             </div>
             <div id="schedule-list"></div>
         </section>
 
+        <!-- 2. JADWAL HARIAN -->
         <section id="daily-section" class="section">
             <div class="section-header"><i class="ph ph-calendar-plus"></i> CATATAN HARIAN</div>
             <div id="daily-list"></div>
         </section>
 
+        <!-- 3. TUGAS KULIAH -->
         <section id="task-section" class="section">
             <div class="task-tabs">
-                <div class="task-tab active" onclick="switchTaskTab('pending')">BELUM SELESAI</div>
-                <div class="task-tab" onclick="switchTaskTab('completed')">SUDAH KELAR</div>
+                <div class="task-tab active" onclick="switchTaskTab('pending')">MASIH NIH</div>
+                <div class="task-tab" onclick="switchTaskTab('completed')">UDAH KELAR</div>
             </div>
             <div id="task-list"></div>
         </section>
 
+        <!-- 4. KEUANGAN -->
         <section id="finance-section" class="section">
             <div class="finance-summary">
-                <div class="finance-label">SISA SALDO</div>
+                <div class="finance-label">SISA DUIT GUE</div>
                 <div class="finance-value" id="display-balance">Rp 0</div>
-                <div class="finance-expense">Pengeluaran: <span id="display-expense">Rp 0</span></div>
-                <button onclick="openFinanceModal()" class="edit-balance-btn">[ ATUR SALDO ]</button>
+                <div class="finance-expense">Udah Keluar: <span id="display-expense">Rp 0</span></div>
+                <button onclick="openFinanceModal()" class="edit-balance-btn">[ GANTI SALDO UTAMA ]</button>
             </div>
             <div class="section-header"><i class="ph ph-receipt"></i> RIWAYAT TRANSAKSI</div>
             <div id="expense-list"></div>
@@ -312,40 +334,43 @@
         </div>
     </nav>
 
+    <!-- Modal -->
     <div class="modal-overlay" id="main-modal">
         <div class="modal-content">
             <div class="modal-header" style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                <h2 style="margin:0; font-family:var(--font-head); color:var(--text-main);" id="modal-title">INPUT DATA</h2>
+                <h2 style="margin:0; font-family:var(--font-head); color:var(--text-main);" id="modal-title">INPUT BARU</h2>
                 <button class="btn-icon" onclick="closeModal()" style="width:30px; height:30px;"><i class="ph ph-x"></i></button>
             </div>
             <form id="main-form">
                 <div id="form-fields"></div>
-                <button type="submit" class="btn-primary">SIMPAN</button>
+                <button type="submit" class="btn-primary">GAS!</button>
             </form>
         </div>
     </div>
 
+    <!-- Toast -->
     <div class="toast" id="toast"><i class="ph ph-check-circle"></i> <span>Berhasil!</span></div>
 
     <script>
+        // --- DATA (Sudah ada ruangan) ---
         let schedules = [
-            { id: 1, day: 'Senin', time: '08:00', subject: 'Pemrograman Web', lecturer: 'Bpk. Hendra, M.Kom', room: 'Lab Komputer 2' },
-            { id: 2, day: 'Rabu', time: '10:00', subject: 'Basis Data', lecturer: 'Ibu Rina, S.T., M.T.', room: 'Ruang Teori 301' }
+            { id: 1, day: 'Senin', time: '08:00', subject: 'Algoritma Pemrograman', lecturer: 'Pak Budi', room: 'Lab. Komputer 1' },
+            { id: 2, day: 'Rabu', time: '10:00', subject: 'Basis Data', lecturer: 'Bu Siti', room: 'R. Teori 204' }
         ];
 
         let dailies = [
-            { id: 1, date: '2023-10-30', time: '16:00', event: 'Kumpul Kelompok Final Project' }
+            { id: 1, date: '2023-10-30', time: '16:00', event: 'Rapat UKM' }
         ];
 
         let tasks = [
-            { id: 1, subject: 'Pemrograman Web', lecturer: 'Bpk. Hendra, M.Kom', startDate: '2023-10-28', dueDate: '2023-11-02', submissionType: 'file', submissionData: 'tugas_web.zip', status: 'pending' }
+            { id: 1, subject: 'Algoritma Pemrograman', lecturer: 'Pak Budi', startDate: '2023-10-28', dueDate: '2023-11-02', submissionType: 'file', submissionData: 'tugas_algo.zip', status: 'pending' }
         ];
 
         let finance = {
-            currentBalance: 750000,
+            currentBalance: 500000,
             expenses: [
-                { id: 1, name: 'Makan Siang Kantin', amount: 20000, date: '2023-10-25' },
-                { id: 2, name: 'Print Tugas Makalah', amount: 15000, date: '2023-10-26' }
+                { id: 1, name: 'Jajan Martabak', amount: 25000, date: '2023-10-25' },
+                { id: 2, name: 'Baterai Laptop', amount: 150000, date: '2023-10-26' }
             ]
         };
 
@@ -354,15 +379,17 @@
         let editingId = null;
         let editingType = null;
 
+        // --- INIT ---
         document.addEventListener('DOMContentLoaded', () => {
             renderAll();
             updateTodayHighlight();
         });
 
+        // --- TYPEWRITER EFFECT ---
         function typeWriter(text, elementId, speed = 50) {
             const element = document.getElementById(elementId);
             element.innerHTML = '';
-            element.setAttribute('data-text', text); 
+            element.setAttribute('data-text', text); // Update glitch text
             let i = 0;
             function type() {
                 if (i < text.length) {
@@ -374,6 +401,7 @@
             type();
         }
 
+        // --- CORE FUNCTIONS ---
         function updateTodayHighlight() {
             const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
             const todayName = days[new Date().getDay()];
@@ -388,18 +416,20 @@
             renderFinance();
         }
 
+        // --- NAVIGATION ---
         function switchTab(tabName, el) {
             currentTab = tabName;
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             el.classList.add('active');
             
             const titles = {
-                'schedule': 'DASHBOARD KULIAH',
-                'daily': 'CATATAN HARIAN',
+                'schedule': 'JADWAL GUE',
+                'daily': 'CATETAN HARIAN',
                 'task': 'DAFTAR TUGAS',
                 'finance': 'CEK DOMPET'
             };
             
+            // Panggil efek ngetik
             typeWriter(titles[tabName], 'page-title');
 
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
@@ -414,6 +444,7 @@
             renderTasks();
         }
 
+        // --- RENDERING ---
         function renderSchedule() {
             const todayList = document.getElementById('today-list');
             const scheduleList = document.getElementById('schedule-list');
@@ -430,11 +461,13 @@
                 const isToday = (item.day === todayName);
                 const container = isToday ? todayList : scheduleList;
                 
+                // HTML Kartu dengan Ruangan
                 const html = `
                     <div class="card ${isToday ? 'today-active' : ''}">
                         <div class="card-title">${item.subject}</div>
                         <div class="card-subtitle"><i class="ph ph-clock"></i> ${item.day} // ${item.time}</div>
                         
+                        <!-- Ruangan Display -->
                         <div class="tag" style="margin-top:8px; border-color:var(--primary); color:var(--primary);">
                             <i class="ph ph-map-pin"></i> ${item.room || '-'}
                         </div>
@@ -458,7 +491,7 @@
             const container = document.getElementById('daily-list');
             container.innerHTML = '';
             if(dailies.length === 0) {
-                container.innerHTML = `<div class="empty-state"><i class="ph ph-coffee"></i><p>Belum ada catatan</p></div>`;
+                container.innerHTML = `<div class="empty-state"><i class="ph ph-coffee"></i><p>Belum ada catetan</p></div>`;
                 return;
             }
             dailies.sort((a,b) => new Date(a.date + ' ' + a.time) - new Date(b.date + ' ' + b.time));
@@ -482,7 +515,7 @@
             container.innerHTML = '';
             const filteredTasks = tasks.filter(t => t.status === currentTaskTab);
             if(filteredTasks.length === 0) {
-                container.innerHTML = `<div class="empty-state"><i class="ph ph-clipboard-text"></i><p>Belum ada tugas</p></div>`;
+                container.innerHTML = `<div class="empty-state"><i class="ph ph-clipboard-text"></i><p>Tugas kosong melompong</p></div>`;
                 return;
             }
 
@@ -537,9 +570,10 @@
             });
         }
 
+        // --- FORM & MODAL ---
         function openAddModal() {
             editingId = null;
-            document.getElementById('modal-title').innerText = 'TAMBAH DATA';
+            document.getElementById('modal-title').innerText = 'TAMBAH DATA BARU';
             document.getElementById('main-form').reset();
             renderFormFields(currentTab);
             document.getElementById('main-modal').classList.add('open');
@@ -574,7 +608,7 @@
 
             if (type === 'schedule') {
                 container.innerHTML = `
-                    <div class="form-group"><label class="form-label">MATA KULIAH</label><input type="text" name="subject" class="form-input" required placeholder="Contoh: Pemrograman Web" value="${data ? data.subject : ''}"></div>
+                    <div class="form-group"><label class="form-label">MATA KULIAH</label><input type="text" name="subject" class="form-input" required placeholder="Contoh: Web Design" value="${data ? data.subject : ''}"></div>
                     <div class="form-group"><label class="form-label">DOSEN</label><input type="text" name="lecturer" class="form-input" required placeholder="Nama Dosen" value="${data ? data.lecturer : ''}"></div>
                     <div class="form-group"><label class="form-label">HARI</label>
                         <select name="day" class="form-select" required>
@@ -648,7 +682,7 @@
 
         function completeTask(id) {
             const task = tasks.find(t => t.id === id);
-            if(task) { task.status = 'completed'; showToast('Tugas sudah diselesaikan!'); renderTasks(); }
+            if(task) { task.status = 'completed'; showToast('Tugas udah kelar!'); renderTasks(); }
         }
 
         function downloadTaskItem(id) {
@@ -662,22 +696,24 @@
                 a.download = `Tugas_${task.subject}.txt`;
                 a.click();
             } else {
-                showToast(`Mengunduh file: ${task.submissionData}`);
+                showToast(`Ngedownload: ${task.submissionData}`);
             }
         }
 
+        // --- SUBMIT & DELETE ---
         document.getElementById('main-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
             
             if (currentTab === 'schedule' || editingType === 'schedule') {
+                // TAMBAHAN FIELD ROOM
                 const newData = { 
                     id: editingId || Date.now(), 
                     subject: formData.get('subject'), 
                     lecturer: formData.get('lecturer'), 
                     day: formData.get('day'), 
                     time: formData.get('time'),
-                    room: formData.get('room')
+                    room: formData.get('room') // New Field
                 };
                 updateArray(schedules, newData);
             } 
@@ -702,11 +738,11 @@
             }
             else if (editingType === 'finance-balance') {
                 finance.currentBalance = formData.get('balance');
-                showToast('Saldo berhasil diupdate!');
+                showToast('Saldo diupdate!');
                 renderFinance(); closeModal(); return;
             }
 
-            renderAll(); closeModal(); showToast('Data berhasil disimpan!');
+            renderAll(); closeModal(); showToast('Data masuk!');
         });
 
         function updateArray(arr, data) {
@@ -715,18 +751,17 @@
         }
 
         function deleteItem(type, id) {
-            if(!confirm('Yakin ingin menghapus data ini?')) return;
+            if(!confirm('Yakin mau dihapus?')) return;
             if(type === 'schedule') schedules = schedules.filter(i => i.id !== id);
             if(type === 'daily') dailies = dailies.filter(i => i.id !== id);
             if(type === 'task') tasks = tasks.filter(i => i.id !== id);
             if(type === 'expense') finance.expenses = finance.expenses.filter(i => i.id !== id);
-            renderAll(); showToast('Data dihapus!');
+            renderAll(); showToast('Data ilang!');
         }
 
         function formatRupiah(num) {
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(num);
         }
-        
         function showToast(msg) {
             const t = document.getElementById('toast'); 
             t.querySelector('span').innerText = msg; 
